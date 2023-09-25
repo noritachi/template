@@ -21,6 +21,12 @@ public class ErrorCode {
     public static final String CATEGORY_ERROR_NOT_FOUND = "ERROR-CATEGORY-001";
 
     /**
+     * Nation error code
+     */
+    public static final String NATION_ERROR_UNAUTHORIZED = "ERROR-CATEGORY-000";
+    public static final String NATION_ERROR_NOT_FOUND = "ERROR-CATEGORY-001";
+
+    /**
      * Group error code
      */
     public static final String GROUP_ERROR_UNAUTHORIZED = "ERROR-GROUP-000";

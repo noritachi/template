@@ -7,10 +7,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 
 @Entity
-@Table(name = TablePrefix.PREFIX_TABLE+"nation")
-@EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
+@Table(name = TablePrefix.PREFIX_TABLE+"nation")
+@EntityListeners(AuditingEntityListener.class)
 public class Nation extends Auditable<String> {
 
     @Id
