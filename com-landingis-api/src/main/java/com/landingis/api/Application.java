@@ -88,13 +88,20 @@ public class Application {
         permissionUpdateGroup.setShowMenu(false);
         results.add(permissionRepository.save(permissionUpdateGroup));
 
-
         Permission permissionCreatePermission = new Permission();
         permissionCreatePermission.setAction("/v1/permission/create");
         permissionCreatePermission.setDescription("Create permission");
         permissionCreatePermission.setName("Create permission");
         permissionCreatePermission.setNameGroup("Permission");
         permissionCreatePermission.setShowMenu(false);
+        results.add(permissionRepository.save(permissionCreatePermission));
+
+        Permission permissionCreateNation = new Permission();
+        permissionCreateNation.setAction("/v1/nation/create");
+        permissionCreateNation.setDescription("Create nation");
+        permissionCreateNation.setName("Create nation");
+        permissionCreateNation.setNameGroup("Nation");
+        permissionCreateNation.setShowMenu(false);
         results.add(permissionRepository.save(permissionCreatePermission));
 
         return results;

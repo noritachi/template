@@ -22,4 +22,8 @@ public class UpdateNationForm {
     @ApiModelProperty(required = true)
     private String nationPostCode;
 
+    @NotNull(message = "nationPKind cannot be null")
+    @ApiModelProperty(required = true)
+    private Long nationKind;
+
 }

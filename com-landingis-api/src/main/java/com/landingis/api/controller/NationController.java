@@ -1,19 +1,18 @@
 package com.landingis.api.controller;
 
-import com.landingis.api.constant.LandingISConstant;
 import com.landingis.api.dto.ApiMessageDto;
 import com.landingis.api.dto.ErrorCode;
 import com.landingis.api.dto.ResponseListObj;
 import com.landingis.api.dto.nation.NationDto;
 import com.landingis.api.exception.RequestException;
 import com.landingis.api.form.nation.CreateNationForm;
+import com.landingis.api.form.nation.UpdateNationForm;
 import com.landingis.api.mapper.NationMapper;
 import com.landingis.api.service.LandingIsApiService;
 import com.landingis.api.storage.criteria.NationCriteria;
 import com.landingis.api.storage.model.Nation;
 import com.landingis.api.storage.repository.NationRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,7 +21,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/nation")
@@ -58,18 +56,6 @@ public class NationController extends ABasicController{
         return responseListObjApiMessageDto;
     }
 
-    @GetMapping(value = "/auto-complete", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ApiMessageDto<ResponseListObj<NationDto>> autoComplete(NationCriteria nationCriteria) {
-        ApiMessageDto<ResponseListObj<NationDto>> responseListObjApiMessageDto = new ApiMessageDto<>();
-        Page<Nation> listNation = nationRepository.findAll(nationCriteria.getSpecification(), Pageable.unpaged());
-        ResponseListObj<NationDto> responseListObj = new ResponseListObj<>();
-        responseListObj.setData(nationMapper.fromEntityListToNationDtoAutoComplete(listNation.getContent()));
-
-        responseListObjApiMessageDto.setData(responseListObj);
-        responseListObjApiMessageDto.setMessage("Get list success");
-        return responseListObjApiMessageDto;
-    }
-
     @GetMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ApiMessageDto<NationDto> get(@PathVariable("id") Long id) {
         if(!isAdmin()){
@@ -97,10 +83,10 @@ public class NationController extends ABasicController{
         Nation nation = nationMapper.fromCreateNationFormToEntity(createNationForm);
         if(createNationForm.getParentId() != null) {
             Nation parentNation = nationRepository.findById(createNationForm.getParentId()).orElse(null);
-            if(parentNation == null || parentNation.getParentNation() != null) {
+            if(parentNation == null || parentNation.getParent() != null) {
                 throw new RequestException(ErrorCode.NATION_ERROR_NOT_FOUND, "Not found nation parent");
             }
-            nation.setParentNation(parentNation);
+            nation.setParent(parentNation);
         }
         nationRepository.save(nation);
         apiMessageDto.setMessage("Create nation success");
@@ -117,13 +103,6 @@ public class NationController extends ABasicController{
         Nation nation = nationRepository.findById(updateNationForm.getId()).orElse(null);
         if(nation == null) {
             throw new RequestException(ErrorCode.NATION_ERROR_NOT_FOUND, "Not found nation.");
-        }
-        if(nation.getStatus().equals(updateNationForm.getStatus()) && nation.getParentNation() == null) {
-            nation.getNationList().forEach(child -> child.setStatus(updateNationForm.getStatus()));
-            nationRepository.saveAll(nation.getNationList());
-        }
-        if(StringUtils.isNoneBlank(nation.getImage()) && !updateNationForm.getNationImage().equals(nation.getImage())) {
-            landingIsApiService.deleteFile(nation.getImage());
         }
         nationMapper.fromUpdateNationFormToEntity(updateNationForm, nation);
         nationRepository.save(nation);
@@ -142,9 +121,11 @@ public class NationController extends ABasicController{
         if(nation == null) {
             throw new RequestException(ErrorCode.NATION_ERROR_NOT_FOUND, "Not found nation");
         }
-        landingIsApiService.deleteFile(nation.getImage());
+        //landingIsApiService.deleteFile(nation.getImage());
         nationRepository.delete(nation);
         result.setMessage("Delete nation success");
         return result;
     }
 }
+
+

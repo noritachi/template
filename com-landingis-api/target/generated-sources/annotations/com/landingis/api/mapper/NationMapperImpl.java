@@ -1,9 +1,9 @@
 package com.landingis.api.mapper;
 
-import com.landingis.api.dto.category.CategoryDto;
-import com.landingis.api.form.category.CreateCategoryForm;
-import com.landingis.api.form.category.UpdateCategoryForm;
-import com.landingis.api.storage.model.Category;
+import com.landingis.api.dto.nation.NationDto;
+import com.landingis.api.form.nation.CreateNationForm;
+import com.landingis.api.form.nation.UpdateNationForm;
+import com.landingis.api.storage.model.Nation;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -11,131 +11,116 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-25T21:58:23+0700",
+    date = "2023-09-26T17:28:08+0700",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.20 (Oracle Corporation)"
 )
 @Component
 public class NationMapperImpl implements NationMapper {
 
     @Override
-    public Category fromCreateCategoryFormToEntity(CreateCategoryForm createCategoryForm) {
-        if ( createCategoryForm == null ) {
+    public Nation fromCreateNationFormToEntity(CreateNationForm createNationForm) {
+        if ( createNationForm == null ) {
             return null;
         }
 
-        Category category = new Category();
+        Nation nation = new Nation();
 
-        category.setImage( createCategoryForm.getCategoryImage() );
-        category.setOrdering( createCategoryForm.getCategoryOrdering() );
-        category.setKind( createCategoryForm.getCategoryKind() );
-        category.setDescription( createCategoryForm.getCategoryDescription() );
-        category.setName( createCategoryForm.getCategoryName() );
+        nation.setKind( createNationForm.getNationKind() );
+        nation.setName( createNationForm.getNationName() );
+        nation.setPostCode( createNationForm.getNationPostCode() );
 
-        return category;
+        return nation;
     }
 
     @Override
-    public void fromUpdateCategoryFormToEntity(UpdateCategoryForm updateCategoryForm, Category category) {
-        if ( updateCategoryForm == null ) {
+    public void fromUpdateNationFormToEntity(UpdateNationForm updateNationForm, Nation nation) {
+        if ( updateNationForm == null ) {
             return;
         }
 
-        if ( updateCategoryForm.getCategoryImage() != null ) {
-            category.setImage( updateCategoryForm.getCategoryImage() );
+        if ( updateNationForm.getNationKind() != null ) {
+            nation.setKind( updateNationForm.getNationKind().intValue() );
         }
-        if ( updateCategoryForm.getCategoryOrdering() != null ) {
-            category.setOrdering( updateCategoryForm.getCategoryOrdering() );
+        if ( updateNationForm.getNationName() != null ) {
+            nation.setName( updateNationForm.getNationName() );
         }
-        if ( updateCategoryForm.getCategoryDescription() != null ) {
-            category.setDescription( updateCategoryForm.getCategoryDescription() );
-        }
-        if ( updateCategoryForm.getCategoryName() != null ) {
-            category.setName( updateCategoryForm.getCategoryName() );
-        }
-        if ( updateCategoryForm.getStatus() != null ) {
-            category.setStatus( updateCategoryForm.getStatus() );
+        if ( updateNationForm.getNationPostCode() != null ) {
+            nation.setPostCode( updateNationForm.getNationPostCode() );
         }
     }
 
     @Override
-    public CategoryDto fromEntityToAdminDto(Category category) {
-        if ( category == null ) {
+    public NationDto fromEntityToAdminDto(Nation nation) {
+        if ( nation == null ) {
             return null;
         }
 
-        CategoryDto categoryDto = new CategoryDto();
+        NationDto nationDto = new NationDto();
 
-        categoryDto.setCategoryImage( category.getImage() );
-        categoryDto.setCategoryOrdering( category.getOrdering() );
-        categoryDto.setCategoryName( category.getName() );
-        Long id = categoryParentCategoryId( category );
+        nationDto.setNationName( nation.getName() );
+        nationDto.setNationKind( nation.getKind() );
+        nationDto.setId( nation.getId() );
+        nationDto.setNationPostCode( nation.getPostCode() );
+        Long id = nationParentId( nation );
         if ( id != null ) {
-            categoryDto.setParentId( id.intValue() );
+            nationDto.setParentId( id.intValue() );
         }
-        categoryDto.setCategoryDescription( category.getDescription() );
-        categoryDto.setCategoryKind( category.getKind() );
-        categoryDto.setCreatedDate( category.getCreatedDate() );
-        categoryDto.setCreatedBy( category.getCreatedBy() );
-        categoryDto.setModifiedDate( category.getModifiedDate() );
-        categoryDto.setModifiedBy( category.getModifiedBy() );
-        categoryDto.setId( category.getId() );
-        categoryDto.setStatus( category.getStatus() );
 
-        return categoryDto;
+        return nationDto;
     }
 
     @Override
-    public List<CategoryDto> fromEntityListToCategoryDtoList(List<Category> categories) {
-        if ( categories == null ) {
+    public List<NationDto> fromEntityListToNationDtoList(List<Nation> nations) {
+        if ( nations == null ) {
             return null;
         }
 
-        List<CategoryDto> list = new ArrayList<CategoryDto>( categories.size() );
-        for ( Category category : categories ) {
-            list.add( fromEntityToAdminDto( category ) );
+        List<NationDto> list = new ArrayList<NationDto>( nations.size() );
+        for ( Nation nation : nations ) {
+            list.add( fromEntityToAdminDto( nation ) );
         }
 
         return list;
     }
 
     @Override
-    public CategoryDto fromEntityToAdminDtoAutoComplete(Category category) {
-        if ( category == null ) {
+    public NationDto fromEntityToAdminDtoAutoComplete(Nation nation) {
+        if ( nation == null ) {
             return null;
         }
 
-        CategoryDto categoryDto = new CategoryDto();
+        NationDto nationDto = new NationDto();
 
-        categoryDto.setCategoryImage( category.getImage() );
-        categoryDto.setId( category.getId() );
-        categoryDto.setCategoryName( category.getName() );
+        nationDto.setNationName( nation.getName() );
+        nationDto.setId( nation.getId() );
+        nationDto.setNationPostCode( nation.getPostCode() );
 
-        return categoryDto;
+        return nationDto;
     }
 
     @Override
-    public List<CategoryDto> fromEntityListToCategoryDtoAutoComplete(List<Category> categories) {
-        if ( categories == null ) {
+    public List<NationDto> fromEntityListToNationDtoAutoComplete(List<Nation> nations) {
+        if ( nations == null ) {
             return null;
         }
 
-        List<CategoryDto> list = new ArrayList<CategoryDto>( categories.size() );
-        for ( Category category : categories ) {
-            list.add( fromEntityToAdminDtoAutoComplete( category ) );
+        List<NationDto> list = new ArrayList<NationDto>( nations.size() );
+        for ( Nation nation : nations ) {
+            list.add( fromEntityToAdminDtoAutoComplete( nation ) );
         }
 
         return list;
     }
 
-    private Long categoryParentCategoryId(Category category) {
-        if ( category == null ) {
+    private Long nationParentId(Nation nation) {
+        if ( nation == null ) {
             return null;
         }
-        Category parentCategory = category.getParentCategory();
-        if ( parentCategory == null ) {
+        Nation parent = nation.getParent();
+        if ( parent == null ) {
             return null;
         }
-        Long id = parentCategory.getId();
+        Long id = parent.getId();
         if ( id == null ) {
             return null;
         }

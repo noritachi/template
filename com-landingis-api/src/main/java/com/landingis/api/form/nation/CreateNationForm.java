@@ -12,7 +12,7 @@ public class CreateNationForm {
 
     @NotEmpty(message = "nationName cannot be null")
     @ApiModelProperty(required = true)
-    private String categoryName;
+    private String nationName;
 
     @NotEmpty(message = "nationPostCode cannot be null")
     @ApiModelProperty(required = true)
