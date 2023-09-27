@@ -47,10 +47,10 @@ public class NationCriteria {
                 }
 
                 if(getParentId() != null) {
-                    predicates.add(cb.equal(root.get("parentNation"), getParentId()));
+                    predicates.add(cb.equal(root.get("parent"), getParentId()));
                 }
                 else {
-                    predicates.add(cb.isNull(root.get("parentNation")));
+                    predicates.add(cb.isNull(root.get("parent")));
                 }
 
                 return cb.and(predicates.toArray(new Predicate[predicates.size()]));
