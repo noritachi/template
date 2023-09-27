@@ -35,6 +35,7 @@ C:\Users\TonPhat\Desktop\template\source\com-landingis-api\src\main\java\com\lan
 C:\Users\TonPhat\Desktop\template\source\com-landingis-api\src\main\java\com\landingis\api\dto\news\NewsAdminDto.java
 C:\Users\TonPhat\Desktop\template\source\com-landingis-api\src\main\java\com\landingis\api\cfg\RestClientConfig.java
 C:\Users\TonPhat\Desktop\template\source\com-landingis-api\src\main\java\com\landingis\api\utils\ZipUtils.java
+C:\Users\TonPhat\Desktop\template\source\com-landingis-api\src\main\java\com\landingis\api\storage\model\Test.java
 C:\Users\TonPhat\Desktop\template\source\com-landingis-api\src\main\java\com\landingis\api\dto\nation\NationDto.java
 C:\Users\TonPhat\Desktop\template\source\com-landingis-api\src\main\java\com\landingis\api\form\nation\CreateNationForm.java
 C:\Users\TonPhat\Desktop\template\source\com-landingis-api\src\main\java\com\landingis\api\form\account\UpdateProfileAdminForm.java

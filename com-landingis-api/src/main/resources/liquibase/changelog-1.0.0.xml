@@ -1,0 +1,370 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- Changeset 1: Tạo bảng landingis_account nếu chưa tồn tại -->
+    <changeSet author="Phat" id="1695781917637-1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="landingis_account"/>
+            </not>
+        </preConditions>
+        <createTable tableName="landingis_account">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT"/>
+            <column name="attempt_forget_pwd" type="INT"/>
+            <column name="attempt_login" type="INT"/>
+            <column name="avatar_path" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="full_name" type="VARCHAR(255)"/>
+            <column name="is_super_admin" type="BIT(1)"/>
+            <column name="kind" type="INT"/>
+            <column name="last_login" type="datetime"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+            <column name="reset_pwd_code" type="VARCHAR(255)"/>
+            <column name="reset_pwd_time" type="datetime"/>
+            <column name="username" type="VARCHAR(255)"/>
+            <column name="verify_code" type="VARCHAR(255)"/>
+            <column name="verify_time" type="datetime"/>
+            <column name="group_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset 2: Tạo bảng landingis_category nếu chưa tồn tại -->
+    <changeSet author="Phat" id="1695781917637-2">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="landingis_category"/>
+            </not>
+        </preConditions>
+        <createTable tableName="landingis_category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="kind" type="INT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="ordering" type="INT"/>
+            <column name="parent_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset 3: Tạo bảng landingis_group nếu chưa tồn tại -->
+    <changeSet author="Phat" id="1695781917637-3">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="landingis_group"/>
+            </not>
+        </preConditions>
+        <createTable tableName="landingis_group">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT"/>
+            <column name="description" type="VARCHAR(1000)"/>
+            <column name="is_super_admin" type="BIT(1)"/>
+            <column name="kind" type="INT"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset 4: Tạo bảng landingis_nation nếu chưa tồn tại -->
+    <changeSet author="Phat" id="1695781917637-4">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="landingis_nation"/>
+            </not>
+        </preConditions>
+        <createTable tableName="landingis_nation">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT"/>
+            <column name="kind" type="INT"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="post_ode" type="VARCHAR(255)"/>
+            <column name="parent_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset 5: Tạo bảng landingis_news nếu chưa tồn tại -->
+    <changeSet author="Phat" id="1695781917637-5">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="landingis_news"/>
+            </not>
+        </preConditions>
+        <createTable tableName="landingis_news">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT"/>
+            <column name="avatar" type="VARCHAR(255)"/>
+            <column name="banner" type="VARCHAR(255)"/>
+            <column name="content" type="LONGTEXT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="kind" type="INT"/>
+            <column name="pin_top" type="INT"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="category_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset 6: Tạo bảng landingis_permission nếu chưa tồn tại -->
+    <changeSet author="Phat" id="1695781917637-6">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="landingis_permission"/>
+            </not>
+        </preConditions>
+        <createTable tableName="landingis_permission">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT"/>
+            <column name="action" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="name_group" type="VARCHAR(255)"/>
+            <column name="show_menu" type="BIT(1)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset 7: Tạo bảng landingis_permission_group nếu chưa tồn tại -->
+    <changeSet author="Phat" id="1695781917637-7">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="landingis_permission_group"/>
+            </not>
+        </preConditions>
+        <createTable tableName="landingis_permission_group">
+            <column name="group_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permission_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset 8: Tạo index cho cột parent_id trong bảng landingis_category -->
+    <changeSet author="Phat" id="1695781917637-8">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists indexName="FK4pvoor2w34qbe6d9hqta8i6pv" tableName="landingis_category"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="FK4pvoor2w34qbe6d9hqta8i6pv" tableName="landingis_category">
+            <column name="parent_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Changeset 9: Tạo index cho cột category_id trong bảng landingis_news -->
+    <changeSet author="Phat" id="1695781917637-9">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists indexName="FKl96vne3sru2m7d41xskyqmnr1" tableName="landingis_news"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="FKl96vne3sru2m7d41xskyqmnr1" tableName="landingis_news">
+            <column name="category_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Changeset 10: Tạo index cho cột permission_id trong bảng landingis_permission_group -->
+    <changeSet author="Phat" id="1695781917637-10">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists indexName="FKm4xd12kbisxc1sargy047fwbv" tableName="landingis_permission_group"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="FKm4xd12kbisxc1sargy047fwbv" tableName="landingis_permission_group">
+            <column name="permission_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Changeset 11: Tạo index cho cột group_id trong bảng landingis_account -->
+    <changeSet author="Phat" id="1695781917637-11">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists indexName="FKp58y0l9qgbsdet8734s3oth13" tableName="landingis_account"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="FKp58y0l9qgbsdet8734s3oth13" tableName="landingis_account">
+            <column name="group_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Changeset 12: Tạo index cho cột parent_id trong bảng landingis_nation -->
+    <changeSet author="Phat" id="1695781917637-12">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists indexName="FKrun6v4sn6s6q0fnq1eri1ey3" tableName="landingis_nation"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="FKrun6v4sn6s6q0fnq1eri1ey3" tableName="landingis_nation">
+            <column name="parent_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Changeset 13: Tạo index cho cột group_id trong bảng landingis_permission_group -->
+    <changeSet author="Phat" id="1695781917637-13">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists indexName="FKrxgweyr39l1s7fgfg8js5y36m" tableName="landingis_permission_group"/>
+            </not>
+        </preConditions>
+        <createIndex indexName="FKrxgweyr39l1s7fgfg8js5y36m" tableName="landingis_permission_group">
+            <column name="group_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Changeset 14: Thêm ràng buộc ngoại cho cột parent_id trong bảng landingis_category -->
+    <changeSet author="Phat" id="1695781917637-14">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="landingis_category" columnName="parent_id"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="parent_id" baseTableName="landingis_category" constraintName="FK4pvoor2w34qbe6d9hqta8i6pv" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="landingis_category" validate="true"/>
+    </changeSet>
+
+    <!-- Changeset 15: Thêm ràng buộc ngoại cho cột category_id trong bảng landingis_news -->
+    <changeSet author="Phat" id="1695781917637-15">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="landingis_news" columnName="category_id"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="landingis_news" constraintName="FKl96vne3sru2m7d41xskyqmnr1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="landingis_category" validate="true"/>
+    </changeSet>
+
+    <!-- Changeset 16: Thêm ràng buộc ngoại cho cột permission_id trong bảng landingis_permission_group -->
+    <changeSet author="Phat" id="1695781917637-16">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="landingis_permission_group" columnName="permission_id"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="permission_id" baseTableName="landingis_permission_group" constraintName="FKm4xd12kbisxc1sargy047fwbv" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="landingis_permission" validate="true"/>
+    </changeSet>
+
+    <!-- Changeset 17: Thêm ràng buộc ngoại cho cột group_id trong bảng landingis_account -->
+    <changeSet author="Phat" id="1695781917637-17">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="landingis_account" columnName="group_id"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="landingis_account" constraintName="FKp58y0l9qgbsdet8734s3oth13" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="landingis_group" validate="true"/>
+    </changeSet>
+
+    <!-- Changeset 18: Thêm ràng buộc ngoại cho cột parent_id trong bảng landingis_nation -->
+    <changeSet author="Phat" id="1695781917637-18">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="landingis_nation" columnName="parent_id"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="parent_id" baseTableName="landingis_nation" constraintName="FKrun6v4sn6s6q0fnq1eri1ey3" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="landingis_nation" validate="true"/>
+    </changeSet>
+
+    <!-- Changeset 19: Thêm ràng buộc ngoại cho cột group_id trong bảng landingis_permission_group -->
+    <changeSet author="Phat" id="1695781917637-19">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="landingis_permission_group" columnName="group_id"/>
+            </not>
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="landingis_permission_group" constraintName="FKrxgweyr39l1s7fgfg8js5y36m" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="landingis_group" validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

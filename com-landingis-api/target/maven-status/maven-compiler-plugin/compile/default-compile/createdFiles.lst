@@ -109,6 +109,7 @@ com\landingis\api\storage\repository\NationRepository.class
 com\landingis\api\controller\GroupController.class
 com\landingis\api\storage\audit\AuditorAwareImpl.class
 com\landingis\api\validation\Gender.class
+com\landingis\api\storage\model\Test.class
 com\landingis\api\validation\impl\GenderValidation.class
 com\landingis\api\form\account\CreateAccountAdminForm.class
 com\landingis\api\intercepter\MyIntercepter.class
