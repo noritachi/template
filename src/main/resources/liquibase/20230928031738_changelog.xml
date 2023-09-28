@@ -1,0 +1,57 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="TonPhat (generated)" id="1695871156165-1">
+        <dropForeignKeyConstraint baseTableName="landingis_category" constraintName="FK4pvoor2w34qbe6d9hqta8i6pv"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-2">
+        <dropForeignKeyConstraint baseTableName="landingis_news" constraintName="FKl96vne3sru2m7d41xskyqmnr1"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-3">
+        <dropForeignKeyConstraint baseTableName="landingis_permission_group" constraintName="FKm4xd12kbisxc1sargy047fwbv"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-4">
+        <dropForeignKeyConstraint baseTableName="landingis_account" constraintName="FKp58y0l9qgbsdet8734s3oth13"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-5">
+        <dropForeignKeyConstraint baseTableName="landingis_nation" constraintName="FKrun6v4sn6s6q0fnq1eri1ey3"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-6">
+        <dropForeignKeyConstraint baseTableName="landingis_permission_group" constraintName="FKrxgweyr39l1s7fgfg8js5y36m"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-7">
+        <dropUniqueConstraint constraintName="UC_LANDINGIS_TESTNAME_COL" tableName="landingis_test"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-8">
+        <dropUniqueConstraint constraintName="UK_1jxpj3svm46oaay79t9qt780r" tableName="landingis_nation"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-9">
+        <dropUniqueConstraint constraintName="UK_biyyy68xdcdvrm9evef5qcar5" tableName="landingis_group"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-10">
+        <dropUniqueConstraint constraintName="UK_m7261krrcxrcdocguxuqimo72" tableName="landingis_permission"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-11">
+        <dropTable tableName="landingis_account"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-12">
+        <dropTable tableName="landingis_category"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-13">
+        <dropTable tableName="landingis_group"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-14">
+        <dropTable tableName="landingis_nation"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-15">
+        <dropTable tableName="landingis_news"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-16">
+        <dropTable tableName="landingis_permission"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-17">
+        <dropTable tableName="landingis_permission_group"/>
+    </changeSet>
+    <changeSet author="TonPhat (generated)" id="1695871156165-18">
+        <dropTable tableName="landingis_test"/>
+    </changeSet>
+</databaseChangeLog>

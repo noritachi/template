@@ -22,5 +22,6 @@ public class Test extends Auditable<String> {
     private String postCode;
     @Column(name = "kind")
     private Integer kind;
-
+    @Column(name= "test")
+    private String test;
 }

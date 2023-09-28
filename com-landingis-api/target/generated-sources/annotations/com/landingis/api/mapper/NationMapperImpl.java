@@ -7,6 +7,8 @@ import com.landingis.api.storage.model.Nation;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+
+import org.mapstruct.BeanMapping;
 import org.springframework.stereotype.Component;
 
 @Generated(
@@ -83,6 +85,7 @@ public class NationMapperImpl implements NationMapper {
         return list;
     }
 
+    @BeanMapping(ignoreByDefault = true)
     @Override
     public NationDto fromEntityToAdminDtoAutoComplete(Nation nation) {
         if ( nation == null ) {

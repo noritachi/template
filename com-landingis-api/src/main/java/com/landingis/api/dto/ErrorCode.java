@@ -23,8 +23,8 @@ public class ErrorCode {
     /**
      * Nation error code
      */
-    public static final String NATION_ERROR_UNAUTHORIZED = "ERROR-CATEGORY-000";
-    public static final String NATION_ERROR_NOT_FOUND = "ERROR-CATEGORY-001";
+    public static final String NATION_ERROR_UNAUTHORIZED = "ERROR-NATION-000";
+    public static final String NATION_ERROR_NOT_FOUND = "ERROR-NATION-001";
 
     /**
      * Group error code
