@@ -33,10 +33,10 @@ public interface NationMapper {
     @Mapping(source = "kind", target = "nationKind")
     @Mapping(source = "parent.id", target = "parentId")
     @BeanMapping(ignoreByDefault = true)
-    @Named("adminGetMapping")
+    @Named("adminGetMappingNews")
     NationDto fromEntityToAdminDto(Nation nation);
 
-    @IterableMapping(elementTargetType = NationDto.class, qualifiedByName = "adminGetMapping")
+    @IterableMapping(elementTargetType = NationDto.class, qualifiedByName = "adminGetMappingNews")
     List<NationDto> fromEntityListToNationDtoList(List<Nation> nations);
 
 
@@ -44,9 +44,9 @@ public interface NationMapper {
     @Mapping(source = "name", target = "nationName")
     @Mapping(source = "postCode", target = "nationPostCode")
     @BeanMapping(ignoreByDefault = true)
-    @Named("adminAutoCompleteMapping")
+    @Named("adminAutoCompleteMappingNews")
     NationDto fromEntityToAdminDtoAutoComplete(Nation nation);
 
-    @IterableMapping(elementTargetType = NationDto.class, qualifiedByName = "adminAutoCompleteMapping")
+    @IterableMapping(elementTargetType = NationDto.class, qualifiedByName = "adminAutoCompleteMappingNews")
     List<NationDto> fromEntityListToNationDtoAutoComplete(List<Nation> nations);
 }

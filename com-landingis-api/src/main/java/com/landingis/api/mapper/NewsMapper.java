@@ -42,7 +42,7 @@ public interface NewsMapper {
     @Mapping(source = "content", target = "content")
     @Mapping(source = "status", target = "status")
     @BeanMapping(ignoreByDefault = true)
-    @Named("adminCreateMapping")
+    @Named("adminCreateNewsMapping")
     News fromCreateNewsFormToEntity(CreateNewsForm createNewsForm);
 
     @Mapping(source = "id", target = "id")
@@ -54,7 +54,7 @@ public interface NewsMapper {
     @Mapping(source = "pinTop", target = "pinTop")
     @Mapping(source = "status", target = "status")
     @BeanMapping(ignoreByDefault = true)
-    @Named("adminUpdateMapping")
+    @Named("adminUpdateNewsMapping")
     void fromUpdateNewsFormToEntity(UpdateNewsForm updateNewsForm, @MappingTarget News news);
 
     @Mapping(source = "id", target = "id")

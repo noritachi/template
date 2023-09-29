@@ -145,7 +145,7 @@ public class GroupController extends ABasicController{
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ApiMessageDto<String> delete(@PathVariable Long id){
+    public ApiMessageDto<String> delete(@PathVariable("id") Long id){
         if(!isSuperAdmin()){
             throw new RequestException(ErrorCode.GROUP_ERROR_UNAUTHORIZED);
         }

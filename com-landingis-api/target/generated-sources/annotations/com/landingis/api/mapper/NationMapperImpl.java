@@ -7,13 +7,11 @@ import com.landingis.api.storage.model.Nation;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
-
-import org.mapstruct.BeanMapping;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-09-27T23:10:50+0700",
+    date = "2023-09-28T20:42:41+0700",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.20 (Oracle Corporation)"
 )
 @Component
@@ -85,7 +83,6 @@ public class NationMapperImpl implements NationMapper {
         return list;
     }
 
-    @BeanMapping(ignoreByDefault = true)
     @Override
     public NationDto fromEntityToAdminDtoAutoComplete(Nation nation) {
         if ( nation == null ) {
