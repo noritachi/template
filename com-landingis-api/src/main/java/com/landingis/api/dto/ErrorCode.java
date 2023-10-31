@@ -21,10 +21,22 @@ public class ErrorCode {
     public static final String CATEGORY_ERROR_NOT_FOUND = "ERROR-CATEGORY-001";
 
     /**
-     * Nation error code
+     * Course error code
      */
-    public static final String NATION_ERROR_UNAUTHORIZED = "ERROR-NATION-000";
-    public static final String NATION_ERROR_NOT_FOUND = "ERROR-NATION-001";
+    public static final String COURSE_ERROR_UNAUTHORIZED = "ERROR-COURSE-000";
+    public static final String COURSE_ERROR_NOT_FOUND = "ERROR-COURSE-001";
+
+    /**
+     * Article error code
+     */
+    public static final String ARTICLE_ERROR_UNAUTHORIZED = "ERROR-ARTICLE-000";
+    public static final String ARTICLE_ERROR_NOT_FOUND = "ERROR-ARTICLE-001";
+
+    /**
+     * Article error code
+     */
+    public static final String VIDEO_ERROR_UNAUTHORIZED = "ERROR-VIDEO-000";
+    public static final String VIDEO_ERROR_NOT_FOUND = "ERROR-VIDEO-001";
 
     /**
      * Group error code

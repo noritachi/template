@@ -96,13 +96,6 @@ public class Application {
         permissionCreatePermission.setShowMenu(false);
         results.add(permissionRepository.save(permissionCreatePermission));
 
-        Permission permissionCreateNation = new Permission();
-        permissionCreateNation.setAction("/v1/nation/create");
-        permissionCreateNation.setDescription("Create nation");
-        permissionCreateNation.setName("Create nation");
-        permissionCreateNation.setNameGroup("Nation");
-        permissionCreateNation.setShowMenu(false);
-        results.add(permissionRepository.save(permissionCreatePermission));
 
         return results;
     }

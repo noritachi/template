@@ -24,7 +24,6 @@ public class CategoryCriteria {
             @Override
             public Predicate toPredicate(Root<Category> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
                 List<Predicate> predicates = new ArrayList<>();
-//                Join<Category, Category> joinCategory = root.join("parentCategory", JoinType.INNER);
 
                 if(getId() != null) {
                     predicates.add(cb.equal(root.get("id"), getId()));
